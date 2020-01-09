@@ -29,3 +29,6 @@ resource "tfe_team_access" "qa_access" {
   team_id      = tfe_team.qa_team.id
   workspace_id = module.aws-qa-workspace.id
 }
+
+# give people team memberships
+
