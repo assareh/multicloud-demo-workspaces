@@ -1,4 +1,4 @@
-resource "tfe_policy_set" "terraform_guides_aws" {
+resource "tfe_policy_set" "terraform_guides_aws_policy_set" {
   name                   = "Terraform-Guides-AWS"
   description            = "A collection of example Sentinel policies for AWS."
   organization           = var.organization
@@ -11,7 +11,7 @@ resource "tfe_policy_set" "terraform_guides_aws" {
   }
 }
 
-resource "tfe_policy_set" "terraform_guides_azure" {
+resource "tfe_policy_set" "terraform_guides_azure_policy_set" {
   name                   = "Terraform-Guides-Azure"
   description            = "A collection of example Sentinel policies for Azure."
   organization           = var.organization
@@ -24,7 +24,7 @@ resource "tfe_policy_set" "terraform_guides_azure" {
   }
 }
 
-resource "tfe_policy_set" "terraform_guides_gcp" {
+resource "tfe_policy_set" "terraform_guides_gcp_policy_set" {
   name                   = "Terraform-Guides-GCP"
   description            = "A collection of example Sentinel policies for GCP."
   organization           = var.organization
@@ -37,7 +37,7 @@ resource "tfe_policy_set" "terraform_guides_gcp" {
   }
 }
 
-resource "tfe_policy_set" "terraform_guides_agnostic" {
+resource "tfe_policy_set" "terraform_guides_agnostic_policy_set" {
   name                   = "Terraform-Guides-Agnostic"
   description            = "A collection of example cloud agnostic Sentinel policies."
   organization           = var.organization

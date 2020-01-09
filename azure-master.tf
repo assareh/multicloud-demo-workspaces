@@ -1,13 +1,16 @@
 module "azure-master-workspace" {
   source             = "./workspace"
   organization       = var.organization
+  token              = var.token
+
   vcs_repo           = "assareh/azure-vm"
   vcs_branch         = "master"
   vcs_oauth_token_id = var.vcs_oauth_token_id
+
+  terraform_version  = "0.12.19"
   auto_apply         = "true"
   allow_destroy      = "1"
-  token              = var.token
-  terraform_version  = "0.12.19"
+
   workspace_variables = [
     {
       key       = "windows_dns_prefix"
@@ -24,7 +27,7 @@ module "azure-master-workspace" {
   ]
 }
 
-resource "tfe_notification_configuration" "azure-master-slack-assareh" {
+resource "tfe_notification_configuration" "azure_notification" {
   name                  = "Slack notifications to #test-assareh-alerts"
   enabled               = true
   destination_type      = "slack"
@@ -34,7 +37,7 @@ resource "tfe_notification_configuration" "azure-master-slack-assareh" {
 }
 
 # Azure credentials
-resource "tfe_variable" "arm_client_id" {
+resource "tfe_variable" "arm_client_id_variable" {
   key          = "ARM_CLIENT_ID"
   value        = var.ARM_CLIENT_ID
   category     = "env"
@@ -42,7 +45,7 @@ resource "tfe_variable" "arm_client_id" {
   workspace_id = module.azure-master-workspace.id
 }
 
-resource "tfe_variable" "arm_client_secret" {
+resource "tfe_variable" "arm_client_secret_variable" {
   key          = "ARM_CLIENT_SECRET"
   value        = var.ARM_CLIENT_SECRET
   category     = "env"
@@ -50,7 +53,7 @@ resource "tfe_variable" "arm_client_secret" {
   workspace_id = module.azure-master-workspace.id
 }
 
-resource "tfe_variable" "arm_subscription_id" {
+resource "tfe_variable" "arm_subscription_id_variable" {
   key          = "ARM_SUBSCRIPTION_ID"
   value        = var.ARM_SUBSCRIPTION_ID
   category     = "env"
@@ -58,7 +61,7 @@ resource "tfe_variable" "arm_subscription_id" {
   workspace_id = module.azure-master-workspace.id
 }
 
-resource "tfe_variable" "arm_tenant_id" {
+resource "tfe_variable" "arm_tenant_id_variable" {
   key          = "ARM_TENANT_ID"
   value        = var.ARM_TENANT_ID
   category     = "env"

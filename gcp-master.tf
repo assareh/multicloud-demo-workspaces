@@ -1,13 +1,16 @@
 module "gcp-master-workspace" {
   source             = "./workspace"
   organization       = var.organization
+  token              = var.token
+
   vcs_repo           = "assareh/gcp-compute-instance"
   vcs_branch         = "master"
   vcs_oauth_token_id = var.vcs_oauth_token_id
+
+  terraform_version  = "0.12.19"
   auto_apply         = "true"
   allow_destroy      = "1"
-  token              = var.token
-  terraform_version  = "0.12.19"
+  
   workspace_variables = [
     {
       key       = "gcp_project"
@@ -18,7 +21,7 @@ module "gcp-master-workspace" {
   ]
 }
 
-resource "tfe_notification_configuration" "gcp-master-slack-assareh" {
+resource "tfe_notification_configuration" "gcp_notification" {
   name                  = "Slack notifications to #test-assareh-alerts"
   enabled               = true
   destination_type      = "slack"
@@ -28,7 +31,7 @@ resource "tfe_notification_configuration" "gcp-master-slack-assareh" {
 }
 
 # GCP credentials
-resource "tfe_variable" "gcp_credentials" {
+resource "tfe_variable" "gcp_credentials_variable" {
   key          = "gcp_credentials"
   value        = data.local_file.gcp_credentials.content
   category     = "terraform"

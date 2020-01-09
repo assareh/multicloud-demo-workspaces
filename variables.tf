@@ -1,5 +1,4 @@
 variable "organization" {}
-
 variable "vcs_oauth_token_id" {}
 
 # Cloud credentials
