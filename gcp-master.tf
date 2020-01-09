@@ -30,7 +30,7 @@ resource "tfe_notification_configuration" "gcp-master-slack-assareh" {
 # GCP credentials
 resource "tfe_variable" "gcp_credentials" {
   key          = "gcp_credentials"
-  value        = var.gcp_credentials
+  value        = data.template_file.gcp_credentials.rendered
   category     = "terraform"
   sensitive    = true
   workspace_id = module.gcp-master-workspace.id
