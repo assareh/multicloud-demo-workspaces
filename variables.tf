@@ -18,6 +18,6 @@ variable "webhook_url" {
   description = "Slack channel webhook url for notification configuration"
 }
 
-data "template_file" "gcp_credentials" {
-  template = "${file(var.gcp_credentials_file)}"
+data "local_file" "gcp_credentials" {
+  filename = var.gcp_credentials_file
 }
