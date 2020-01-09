@@ -17,7 +17,7 @@ resource "tfe_notification_configuration" "aws-prod-slack-assareh" {
   destination_type      = "slack"
   triggers              = ["run:needs_attention", "run:errored"]
   url                   = var.webhook_url
-  workspace_external_id = module.aws-dev-workspace.external_id
+  workspace_external_id = module.aws-prod-workspace.external_id
 }
 
 # AWS credentials
@@ -25,7 +25,7 @@ resource "tfe_variable" "prod_access_key" {
   key          = "AWS_ACCESS_KEY_ID"
   value        = var.AWS_ACCESS_KEY_ID
   category     = "env"
-  workspace_id = module.aws-dev-workspace.id
+  workspace_id = module.aws-prod-workspace.id
 }
 
 resource "tfe_variable" "prod_secret_key" {
@@ -33,5 +33,5 @@ resource "tfe_variable" "prod_secret_key" {
   value        = var.AWS_SECRET_ACCESS_KEY
   category     = "env"
   sensitive    = true
-  workspace_id = module.aws-dev-workspace.id
+  workspace_id = module.aws-prod-workspace.id
 }
