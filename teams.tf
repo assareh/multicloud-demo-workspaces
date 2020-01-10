@@ -21,25 +21,25 @@ resource "tfe_team" "qa_team" {
 resource "tfe_team_access" "dev_ws_dev_team" {
   access       = "plan"
   team_id      = tfe_team.dev_team.id
-  workspace_id = module.aws-dev-workspace.id
+  workspace_id = module.aws_dev_workspace.id
 }
 
 resource "tfe_team_access" "dev_ws_qa_team" {
   access       = "read"
   team_id      = tfe_team.qa_team.id
-  workspace_id = module.aws-dev-workspace.id
+  workspace_id = module.aws_dev_workspace.id
 }
 
 resource "tfe_team_access" "qa_ws_qa_team" {
   access       = "write"
   team_id      = tfe_team.qa_team.id
-  workspace_id = module.aws-qa-workspace.id
+  workspace_id = module.aws_qa_workspace.id
 }
 
 resource "tfe_team_access" "qa_ws_dev_team" {
   access       = "read"
   team_id      = tfe_team.dev_team.id
-  workspace_id = module.aws-qa-workspace.id
+  workspace_id = module.aws_qa_workspace.id
 }
 
 resource "tfe_team_member" "iamdevloper" {
