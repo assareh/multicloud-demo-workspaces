@@ -19,7 +19,7 @@ resource "tfe_team" "qa_team" {
 }
 
 resource "tfe_team_access" "dev_ws_dev_team" {
-  access       = "write"
+  access       = "plan"
   team_id      = tfe_team.dev_team.id
   workspace_id = module.aws-dev-workspace.id
 }
