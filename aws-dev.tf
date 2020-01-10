@@ -17,7 +17,7 @@ resource "tfe_notification_configuration" "aws_dev_notification" {
   name                  = "Slack notifications to #test-assareh-alerts"
   enabled               = true
   destination_type      = "slack"
-  triggers              = ["run:needs_attention", "run:errored"]
+  triggers              = ["run:needs_attention"]
   url                   = var.webhook_url
   workspace_external_id = module.aws_dev_workspace.external_id
 }
