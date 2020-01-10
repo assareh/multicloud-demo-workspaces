@@ -33,7 +33,7 @@ resource "tfe_notification_configuration" "azure_notification" {
   destination_type      = "slack"
   triggers              = ["run:needs_attention", "run:errored"]
   url                   = var.webhook_url
-  workspace_external_id = module.gcp_master_workspace.external_id
+  workspace_external_id = module.azure_master_workspace.external_id
 }
 
 # Azure credentials
