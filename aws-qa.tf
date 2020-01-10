@@ -1,11 +1,11 @@
 module "aws_qa_workspace" {
-  source              = "./workspace"
-  organization        = var.organization
-  token               = var.token
+  source       = "./workspace"
+  organization = var.organization
+  token        = var.token
 
-  vcs_repo            = "assareh/aws-ec2-instance"
-  vcs_branch          = "qa"
-  vcs_oauth_token_id  = var.vcs_oauth_token_id
+  vcs_repo           = "assareh/aws-ec2-instance"
+  vcs_branch         = "qa"
+  vcs_oauth_token_id = var.vcs_oauth_token_id
 
   terraform_version   = "0.12.10"
   auto_apply          = "true"

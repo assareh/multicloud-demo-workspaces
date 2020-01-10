@@ -1,15 +1,15 @@
-module "azure-master-workspace" {
-  source             = "./workspace"
-  organization       = var.organization
-  token              = var.token
+module "azure_master_workspace" {
+  source       = "./workspace"
+  organization = var.organization
+  token        = var.token
 
   vcs_repo           = "assareh/azure-vm"
   vcs_branch         = "master"
   vcs_oauth_token_id = var.vcs_oauth_token_id
 
-  terraform_version  = "0.12.19"
-  auto_apply         = "true"
-  allow_destroy      = "1"
+  terraform_version = "0.12.19"
+  auto_apply        = "true"
+  allow_destroy     = "1"
 
   workspace_variables = [
     {
@@ -33,7 +33,7 @@ resource "tfe_notification_configuration" "azure_notification" {
   destination_type      = "slack"
   triggers              = ["run:needs_attention", "run:errored"]
   url                   = var.webhook_url
-  workspace_external_id = module.gcp-master-workspace.external_id
+  workspace_external_id = module.gcp_master_workspace.external_id
 }
 
 # Azure credentials
@@ -42,7 +42,7 @@ resource "tfe_variable" "arm_client_id_variable" {
   value        = var.ARM_CLIENT_ID
   category     = "env"
   sensitive    = false
-  workspace_id = module.azure-master-workspace.id
+  workspace_id = module.azure_master_workspace.id
 }
 
 resource "tfe_variable" "arm_client_secret_variable" {
@@ -50,7 +50,7 @@ resource "tfe_variable" "arm_client_secret_variable" {
   value        = var.ARM_CLIENT_SECRET
   category     = "env"
   sensitive    = true
-  workspace_id = module.azure-master-workspace.id
+  workspace_id = module.azure_master_workspace.id
 }
 
 resource "tfe_variable" "arm_subscription_id_variable" {
@@ -58,7 +58,7 @@ resource "tfe_variable" "arm_subscription_id_variable" {
   value        = var.ARM_SUBSCRIPTION_ID
   category     = "env"
   sensitive    = false
-  workspace_id = module.azure-master-workspace.id
+  workspace_id = module.azure_master_workspace.id
 }
 
 resource "tfe_variable" "arm_tenant_id_variable" {
@@ -66,5 +66,5 @@ resource "tfe_variable" "arm_tenant_id_variable" {
   value        = var.ARM_TENANT_ID
   category     = "env"
   sensitive    = false
-  workspace_id = module.azure-master-workspace.id
+  workspace_id = module.azure_master_workspace.id
 }
