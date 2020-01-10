@@ -22,6 +22,13 @@ resource "tfe_notification_configuration" "aws_qa_notification" {
   workspace_external_id = module.aws_qa_workspace.external_id
 }
 
+resource "tfe_variable" "qa_env_variable" {
+  key          = "env"
+  value        = "qa"
+  category     = "terraform"
+  workspace_id = module.aws_qa_workspace.id
+}
+
 # AWS credentials
 resource "tfe_variable" "qa_access_key_variable" {
   key          = "AWS_ACCESS_KEY_ID"

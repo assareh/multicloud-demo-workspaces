@@ -22,6 +22,13 @@ resource "tfe_notification_configuration" "aws_prod_notification" {
   workspace_external_id = module.aws_prod_workspace.external_id
 }
 
+resource "tfe_variable" "prod_env_variable" {
+  key          = "env"
+  value        = "prod"
+  category     = "terraform"
+  workspace_id = module.aws_prod_workspace.id
+}
+
 # AWS credentials
 resource "tfe_variable" "prod_access_key_variable" {
   key          = "AWS_ACCESS_KEY_ID"
