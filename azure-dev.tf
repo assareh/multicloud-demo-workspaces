@@ -33,7 +33,7 @@ resource "tfe_notification_configuration" "azure_dev_notification" {
   destination_type      = "slack"
   triggers              = ["run:needs_attention", "run:errored"]
   url                   = var.webhook_url
-  workspace_external_id = module.azure_master_workspace.external_id
+  workspace_external_id = module.azure_dev_workspace.external_id
 }
 
 # Azure credentials
@@ -42,7 +42,7 @@ resource "tfe_variable" "dev_arm_client_id_variable" {
   value        = var.ARM_CLIENT_ID
   category     = "env"
   sensitive    = false
-  workspace_id = module.azure_master_workspace.id
+  workspace_id = module.azure_dev_workspace.id
 }
 
 resource "tfe_variable" "dev_arm_client_secret_variable" {
@@ -50,7 +50,7 @@ resource "tfe_variable" "dev_arm_client_secret_variable" {
   value        = var.ARM_CLIENT_SECRET
   category     = "env"
   sensitive    = true
-  workspace_id = module.azure_master_workspace.id
+  workspace_id = module.azure_dev_workspace.id
 }
 
 resource "tfe_variable" "dev_arm_subscription_id_variable" {
@@ -58,7 +58,7 @@ resource "tfe_variable" "dev_arm_subscription_id_variable" {
   value        = var.ARM_SUBSCRIPTION_ID
   category     = "env"
   sensitive    = false
-  workspace_id = module.azure_master_workspace.id
+  workspace_id = module.azure_dev_workspace.id
 }
 
 resource "tfe_variable" "dev_arm_tenant_id_variable" {
@@ -66,5 +66,5 @@ resource "tfe_variable" "dev_arm_tenant_id_variable" {
   value        = var.ARM_TENANT_ID
   category     = "env"
   sensitive    = false
-  workspace_id = module.azure_master_workspace.id
+  workspace_id = module.azure_dev_workspace.id
 }
