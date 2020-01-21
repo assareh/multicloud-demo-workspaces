@@ -42,6 +42,12 @@ resource "tfe_team_access" "qa_ws_dev_team" {
   workspace_id = module.aws_qa_workspace.id
 }
 
+resource "tfe_team_access" "azure_dev_ws_dev_team" {
+  access       = "plan"
+  team_id      = tfe_team.dev_team.id
+  workspace_id = module.azure_dev_workspace.id
+}
+
 resource "tfe_team_member" "iamdevloper" {
   team_id  = tfe_team.dev_team.id
   username = "iamdevloper"

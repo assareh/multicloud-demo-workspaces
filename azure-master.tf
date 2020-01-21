@@ -27,7 +27,7 @@ module "azure_master_workspace" {
   ]
 }
 
-resource "tfe_notification_configuration" "azure_notification" {
+resource "tfe_notification_configuration" "azure_master_notification" {
   name                  = "Slack notifications to #test-assareh-alerts"
   enabled               = true
   destination_type      = "slack"
@@ -37,7 +37,7 @@ resource "tfe_notification_configuration" "azure_notification" {
 }
 
 # Azure credentials
-resource "tfe_variable" "arm_client_id_variable" {
+resource "tfe_variable" "master_arm_client_id_variable" {
   key          = "ARM_CLIENT_ID"
   value        = var.ARM_CLIENT_ID
   category     = "env"
@@ -45,7 +45,7 @@ resource "tfe_variable" "arm_client_id_variable" {
   workspace_id = module.azure_master_workspace.id
 }
 
-resource "tfe_variable" "arm_client_secret_variable" {
+resource "tfe_variable" "master_arm_client_secret_variable" {
   key          = "ARM_CLIENT_SECRET"
   value        = var.ARM_CLIENT_SECRET
   category     = "env"
@@ -53,7 +53,7 @@ resource "tfe_variable" "arm_client_secret_variable" {
   workspace_id = module.azure_master_workspace.id
 }
 
-resource "tfe_variable" "arm_subscription_id_variable" {
+resource "tfe_variable" "master_arm_subscription_id_variable" {
   key          = "ARM_SUBSCRIPTION_ID"
   value        = var.ARM_SUBSCRIPTION_ID
   category     = "env"
@@ -61,7 +61,7 @@ resource "tfe_variable" "arm_subscription_id_variable" {
   workspace_id = module.azure_master_workspace.id
 }
 
-resource "tfe_variable" "arm_tenant_id_variable" {
+resource "tfe_variable" "master_arm_tenant_id_variable" {
   key          = "ARM_TENANT_ID"
   value        = var.ARM_TENANT_ID
   category     = "env"
