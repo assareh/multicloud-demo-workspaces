@@ -29,7 +29,7 @@ resource "tfe_policy_set" "terraform_guides_azure_policy_set" {
   description            = "A collection of example Sentinel policies for Azure."
   organization           = var.organization
   policies_path          = "/governance/second-generation/azure"
-  workspace_external_ids = [module.azure_master_workspace.external_id]
+  workspace_external_ids = [module.azure_master_workspace.external_id, module.azure_dev_workspace.external_id]
 
   vcs_repo {
     identifier     = "assareh/terraform-guides"
@@ -55,7 +55,7 @@ resource "tfe_policy_set" "terraform_guides_agnostic_policy_set" {
   description            = "A collection of example cloud agnostic Sentinel policies."
   organization           = var.organization
   policies_path          = "/governance/second-generation/cloud-agnostic"
-  workspace_external_ids = [module.aws_dev_workspace.external_id, module.aws_qa_workspace.external_id, module.aws_prod_workspace.external_id, module.azure_master_workspace.external_id, module.gcp_master_workspace.external_id]
+  workspace_external_ids = [module.aws_dev_workspace.external_id, module.aws_qa_workspace.external_id, module.aws_prod_workspace.external_id, module.azure_master_workspace.external_id, module.azure_dev_workspace.external_id, module.gcp_master_workspace.external_id]
 
   vcs_repo {
     identifier     = "assareh/terraform-guides"
