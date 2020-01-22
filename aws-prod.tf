@@ -8,7 +8,7 @@ module "aws_prod_workspace" {
   vcs_oauth_token_id = var.vcs_oauth_token_id
 
   terraform_version   = "0.12.10"
-  auto_apply          = "true"
+  auto_apply          = "false"
   allow_destroy       = "0"
   workspace_variables = []
 }
