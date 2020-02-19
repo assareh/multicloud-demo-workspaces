@@ -31,7 +31,7 @@ resource "tfe_notification_configuration" "gcp_notification" {
 }
 
 # GCP credentials
-resource "tfe_variable" "gcp_credentials_variable" {
+resource "tfe_variable" "prod_gcp_credentials_variable" {
   key          = "gcp_credentials"
   value        = data.local_file.gcp_credentials.content
   category     = "terraform"
