@@ -21,7 +21,7 @@ module "gcp_dev_workspace" {
   ]
 }
 
-resource "tfe_notification_configuration" "gcp_notification" {
+resource "tfe_notification_configuration" "gcp_dev_notification" {
   name                  = "Slack notifications to #test-assareh-alerts"
   enabled               = true
   destination_type      = "slack"
@@ -31,7 +31,7 @@ resource "tfe_notification_configuration" "gcp_notification" {
 }
 
 # GCP credentials
-resource "tfe_variable" "dev_gcp_credentials_variable" {
+resource "tfe_variable" "gcp_dev_credentials_variable" {
   key          = "gcp_credentials"
   value        = data.local_file.gcp_credentials.content
   category     = "terraform"
