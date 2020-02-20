@@ -21,6 +21,13 @@ module "gcp_stage_workspace" {
   ]
 }
 
+resource "tfe_variable" "gcp_stage_env_variable" {
+  key          = "env"
+  value        = "stage"
+  category     = "terraform"
+  workspace_id = module.gcp_stage_workspace.id
+}
+
 resource "tfe_notification_configuration" "gcp_stage_notification" {
   name                  = "Slack notifications to #test-assareh-alerts"
   enabled               = true

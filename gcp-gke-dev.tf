@@ -21,6 +21,13 @@ module "gcp_gke_dev_workspace" {
   ]
 }
 
+resource "tfe_variable" "gcp_gke_dev_env_variable" {
+  key          = "env"
+  value        = "dev"
+  category     = "terraform"
+  workspace_id = module.gcp_gke_dev_workspace.id
+}
+
 resource "tfe_notification_configuration" "gcp_gke_dev_notification" {
   name                  = "Slack notifications to #test-assareh-alerts"
   enabled               = true
