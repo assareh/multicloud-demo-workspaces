@@ -7,7 +7,7 @@ module "gcp_prod_workspace" {
   vcs_branch         = "prod"
   vcs_oauth_token_id = var.vcs_oauth_token_id
 
-  terraform_version = "0.12.19"
+  terraform_version = "0.12.12"
   auto_apply        = "false"
   allow_destroy     = "0"
 
