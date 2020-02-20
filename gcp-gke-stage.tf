@@ -7,7 +7,7 @@ module "gcp_gke_stage_workspace" {
   vcs_branch         = "stage"
   vcs_oauth_token_id = var.vcs_oauth_token_id
 
-  terraform_version = "0.12.12"
+  terraform_version = "0.12.20"
   auto_apply        = "false"
   allow_destroy     = "0"
 

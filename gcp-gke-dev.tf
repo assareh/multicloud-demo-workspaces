@@ -7,7 +7,7 @@ module "gcp_gke_dev_workspace" {
   vcs_branch         = "dev"
   vcs_oauth_token_id = var.vcs_oauth_token_id
 
-  terraform_version = "0.12.12"
+  terraform_version = "0.12.20"
   auto_apply        = "true"
   allow_destroy     = "1"
 
