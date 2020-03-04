@@ -14,7 +14,7 @@ module "azure_dev_workspace" {
   workspace_variables = [
     {
       key       = "windows_dns_prefix"
-      value     = "assareh-demo"
+      value     = "assareh-demo-dev"
       category  = "terraform"
       sensitive = false
     },
